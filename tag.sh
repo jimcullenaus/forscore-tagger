@@ -11,28 +11,16 @@ then
 	exit 1
 fi
 
-echo "Enter the title:"
-read title
+read -r -p "Enter the title: " title
 
-echo "Enter the author(s) (comma separated):"
-read author
+read -r -p "Enter the author(s) (comma separated): " author
 
-echo "Enter the genre(s) (comma separated):"
-read genre
+read -r -p "Enter the genre(s) (comma separated): " genre
 
-echo "Enter the number of sharps or flats (flats are negative) in the key:"
-read keysf
+read -r -p "Enter the number of sharps or flats (flats are negative) in the key: " keysf
 
-echo "Enter 1 if minor key, 0 if major key:"
-read keymi
+read -r -p "Enter 1 if minor key, 0 if major key: " keymi
 
-echo "Enter any keywords, comma separated:"
-read keywords
+read -r -p "Enter any keywords, comma separated: " keywords
 
-echo "exiftool -Title=\"$title\" -Author=\"$author\" -Subject=\"$genre\" -Keywords=\"keysf:$keysf,keymi:$keymi,$keywords\" $1"
-# exiftool \
-# -Title="The Witcher 3—Priscilla's Song" \
-# -Author="Marcin Przybylowicz, Jonas Lefvert" \
-# -Subject="Soundtrack" \
-# -Keywords="keysf:-1,keymi:1,Witcher" \
-# The\ Witcher\ 3\ Priscillas\ Song.pdf
+exiftool -Title="$title" -Author="$author" -Subject="$genre" -Keywords="keysf:$keysf,keymi:$keymi,$keywords" "$1"
